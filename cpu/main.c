@@ -15,13 +15,7 @@ struct instruction_t test_instruction = {
 int main(void) {
     printf("Program start\n");
     execute_instruction(&test_instruction);
-    for (unsigned int i = 0; i < REGISTERS_PER_TYPE; i++) {
-        printf("Reg: %d\n",i);
-        for (unsigned int j = 0; j < SHORT_WIDTH_REGISTER_SIZE; j++) {
-            printf("0x%02X ",gw_registers[i][j]);
-        }
-	printf("\n");
-    }
+
     printf("Done\n");
     return 0;
 }

@@ -3,32 +3,39 @@
 #include "../../../include/variables/cpu/immediates.h"
 
 #include <stdio.h>
-
-void mov_i (struct instruction_t *mov_i_ptr) {
+/*
+unsigned char p {
 	switch (mov_i_ptr->used_register_types[MOV_I_UV0]) {
 		case SHORT_WIDTH_REGISTER_TYPE: {
-			if ( mov_i_ptr->used_immediate_types[MOV_I_UV1] != SHORT_WIDTH_REGISTER_TYPE ) {
-				printf("error: used immediate type\n");
-			}
-			for (unsigned int i = 0 ; i < IMMEDIATE_MAX_SIZE ; i++) {
-				sw_registers[mov_i_ptr->used_register_types[MOV_I_UV2]][i] = mov_i_ptr->immediates[MOV_I_UV3][i];
-			}
+			unsigned char (*register_type_ptr)[SHORT_WIDTH_REGISTER_SIZE] = sw_registers;
 			break;
 		}
-		case GENERAL_WIDTH_REGISTER_SIZE: {
+		case GENERAL_WIDTH_REGISTER_TYPE: {
+			unsigned char (*register_type_ptr)[GENERAL_WIDTH_REGISTER_SIZE] = gw_registers;
 			break;
 		}
-		case DOUBLE_WIDTH_REGISTER_SIZE: {
+		case DOUBLE_WIDTH_REGISTER_TYPE: {
+			unsigned char (*register_type_ptr)[DOUBLE_WIDTH_REGISTER_SIZE] = dw_registers;
 			break;
 		}
-		case QUAD_WIDTH_REGISTER_SIZE: {
+		case QUAD_WIDTH_REGISTER_TYPE: {
+			unsigned char (*register_type_ptr)[QUAD_WIDTH_REGISTER_SIZE] = qw_registers;
 			break;
 		}
-		case LONG_WIDTH_REGISTER_SIZE: {
+		case LONG_WIDTH_REGISTER_TYPE: {
+			unsigned char (*register_type_ptr)[LONG_WIDTH_REGISTER_SIZE] = mw_registers;
 			break;
 		}
-		case MAX_WIDTH_REGISTER_SIZE: {
+		case MAX_WIDTH_REGISTER_TYPE: {
+			unsigned char (*register_type_ptr)[MAX_WIDTH_REGISTER_SIZE] = gw_registers;
 			break;
 		}
+	}
+	return register_type_ptr;
+}
+*/
+void mov_i (struct instruction_t *mov_i_ptr) {
+	for (unsigned int i = 0 ; i < s_imm4 ; i++) {
+		register_bank[register_type_address[ mov_i_ptr->used_registers[MOV_I_UV0] ] + i] = mov_i_ptr->immediates[imm4][i];
 	}
 }
