@@ -3,8 +3,8 @@
 
 #include "../variables/virtual/instructions.h"
 
-static inline void nop (void);
-static inline void mov_i (struct instruction_t *mov_i_ptr);
-int execute_instruction(struct instruction_t *inst_ptr);
+void mov_i (struct instruction_t *mov_i_ptr);
+void execute_instruction(struct instruction_t *inst_ptr);
+
 
 #endif

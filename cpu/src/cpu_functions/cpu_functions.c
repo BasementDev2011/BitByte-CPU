@@ -4,31 +4,47 @@
 
 #include <stdio.h>
 
-inline void nop (void) {
-	return;
-}
-
-inline void cast_access(unsigned int register_value,unsigned char value) {
-	if (register_value <! MAX_WIDTH_REGISTER_SIZE) {
-
+// mov_i sw r0 immX 0x00 ...
+// mov_r sw r0 lw r0
+void mov_i (struct instruction_t *mov_i_ptr) {
+	switch (mov_i_ptr->used_register_types[MOV_I_UV0]) {
+		case SHORT_WIDTH_REGISTER_TYPE: {
+			if ( mov_i_ptr->used_immediate_types[MOV_I_UV1] != SHORT_WIDTH_REGISTER_TYPE ) {
+				printf("error: used immediate type\n");
+			}
+			for (unsigned int i = 0 ; i < IMMEDIATE_MAX_SIZE ; i++) {
+				sw_registers[mov_i_ptr->used_register_types[MOV_I_UV2]][i] = mov_i_ptr->immediates[MOV_I_UV3][i];
+			}
+			break;
+		}
+		case GENERAL_WIDTH_REGISTER_SIZE: {
+			break;
+		}
+		case DOUBLE_WIDTH_REGISTER_SIZE: {
+			break;
+		}
+		case QUAD_WIDTH_REGISTER_SIZE: {
+			break;
+		}
+		case LONG_WIDTH_REGISTER_SIZE: {
+			break;
+		}
+		case MAX_WIDTH_REGISTER_SIZE: {
+			break;
+		}
 	}
 }
 
-inline void mov_i (struct instruction_t *mov_i_ptr) {
-	for (unsigned int i = 0 ; i < MAX_IMMEDIATES ; i++) {
-		e
-	}
-}
-
-int execute_instruction(struct instruction_t *inst_ptr) {
+void execute_instruction(struct instruction_t *inst_ptr) {
 	switch (inst_ptr->instruction_id) {
 		case NOP : {
-			nop();
+			break;
 		}
 
 		case MOV_I : {
-			printf("WE GOT TO MOVE DEEZ \n");
-			mov_i(&inst_ptr);
+			printf("MOV_I\n");
+			mov_i(inst_ptr);
+			break;
 		}
 	}
 }

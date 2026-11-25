@@ -2,18 +2,16 @@
 #define BIT_BYTE_IMMEDIATES_H
 
 enum {
-	imms = 0x00,
-	imm2 = 0x01,
-	imm4 = 0x02,
-	imm8 = 0x03,
-	imm16 = 0x04,
-	imm32 = 0x05,
-	imm64 = 0x06,
-	imm128 = 0x07,
-	imm255 = 0x08
+	imm4 = 4,
+	imm8 = 8,
+	imm16 = 16,
+	imm32 = 32,
+	imm64 = 64,
+	imm128 = 128,
+	imm255 = 255
 };
 
-#define MAX_IMMEDIATES 16
-#define IMMEDIATE_MAX_SIZE imm255
+#define TOTAL_IMMEDIATE_TYPES 7
+#define IMMEDIATE_MAX_SIZE 255
 
 #endif

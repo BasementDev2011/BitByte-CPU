@@ -15,6 +15,6 @@ find ./ -name "*.o"
 object_files=$(find ./ -name "*.o")
 
 echo "Stitching objects"
-gcc $object_files -o main
+gcc $object_files -O2 -o main
 
 echo "Build complete"
